@@ -5,7 +5,29 @@
 }
 
 
-.Generate{
+.option
+{
+    display: flex;
+    height: 80px;
+    width: 100%;
+    background: aliceblue;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.option div
+{
+    
+    height: 50%;
+    width: 20%;
+    top: 20%;
+    border-radius: 20px;
+    background: darkgray;
+    text-align: center;
+
+}
+
+/* .Generate{
    
    height: 80px;
    width: 25%;
@@ -21,20 +43,20 @@
 
    
 
-}
+} */
 
 .Board{
     position: absolute;
     top: 150px;
-    left: 400px;
+    left: 300px;
     display: flex;
     flex-direction: column;
-    height: 600px;
-    width: 600px;
+    height: 70%;
+    width: 60%;
     background: chartreuse;
 
 }
-.min-path
+/* .min-path
 {
     height: 80px;
    width: 25%;
@@ -49,7 +71,7 @@
    font: 1em sans-serif;
 
 
-}
+} */
 .row{
 
     display: flex;
@@ -67,4 +89,7 @@
 }
 .active{
     background: green;
+}
+.visited{
+    background: pink;
 }
