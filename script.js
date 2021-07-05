@@ -3,6 +3,7 @@ let Board = document.querySelector(".Board");
 let Path = document.querySelector(".min-path");
 let memopath = document.querySelector(".memo");
 let stop = document.querySelector(".stop");
+let minimumPath = document.querySelector(".minimum-path");
 
 stop.addEventListener("click" , function()
 {
@@ -11,6 +12,7 @@ stop.addEventListener("click" , function()
 generateBoard.addEventListener("click" , CreateBoard);
 Path.addEventListener("click" , GeneratePath);
 memopath.addEventListener("click" , GeneratePathMemo);
+minimumPath.addEventListener("click" , minPathGenerator);
 
 let BoardArray = [];
 function CreateBoard(e)
@@ -111,7 +113,7 @@ async function allpathmemo(i , j , sum , maxsum)
      }
      if(j>=20)
      {
-         return;
+         return; 
      }
      
     //  if(i==19 && j==19)
@@ -143,13 +145,14 @@ async function allpathmemo(i , j , sum , maxsum)
     
 }
 
-function GeneratePathMemo()
+async function GeneratePathMemo()
 {
     console.log("generatepathmemo")
     let sum = 0;
     let maxsum = -1;
    
-    allpathmemo(0 , 0 , sum , maxsum);
+    await allpathmemo(0 , 0 , sum , maxsum);
+    minPathGenerator();
 
 }
 
@@ -162,4 +165,88 @@ function GeneratePath()
    
     allpath(0 , 0 , sum , maxsum );
 
+}
+
+let maxsum =Number.MAX_SAFE_INTEGER+1;
+let minele = [];
+// async function minPath(i , j , ele , sum)
+// {
+//     console.log("inside minpath recursive");
+//     if(i<0 || j<0 || i>=20 || j>=20)
+//     {
+//         return Number.MAX_SAFE_INTEGER+1;
+//     }
+//     if(i==19 && j==19)
+//     {
+         
+//     }
+    
+//     await minPath(i+1 , j , ele , sum+Number(currentBox.textContent));
+//     await minPath(i , j+1 , ele , sum+Number(currentBox.textContent));
+    
+// }
+
+
+
+
+
+
+
+   function minPath(i , j )
+   {
+        if(i<0 || j<0 || i>=20 || j>=20)
+        {
+            return;
+        }
+        if(i==19 && j==19)
+        {
+            minele.push(document.querySelector(`[rowid="${i}"][colid="${j}"]`));
+            return;
+        }
+        if(i==19 && j!=19)
+        {
+            minele.push(document.querySelector(`[rowid="${i}"][colid="${j+1}"]`));
+            minPath(i , j+1);
+
+        }
+        else if(j==19 && i!=19)
+        {
+            minele.push(document.querySelector(`[rowid="${i+1}"][colid="${j}"]`));
+            minPath(i+1 , j);
+        }
+        else
+        {
+            minele.push(document.querySelector(`[rowid="${i}"][colid="${j}"]`));
+            if(BoardArray[i+1][j].value <= BoardArray[i][j+1].value)
+            {
+                minPath(i+1 , j);
+            }
+            else
+            {
+                minPath(i, j+1);
+            }
+
+        }
+       
+        return;
+        
+
+   }
+function minPathGenerator()
+ {
+//     console.log("inside minPath")
+//     let ele = [];
+//     minPath(0 , 0 , ele , 0);
+//     console.log(minele);
+       minPath(0 , 0);
+       for(let i=0;i<minele.length;i++)
+       {
+           minele[i].classList.add("min-class");
+       }
+       
+      
+
+      
+
+     
 }
