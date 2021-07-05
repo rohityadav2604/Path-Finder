@@ -3,7 +3,7 @@ let Board = document.querySelector(".Board");
 let Path = document.querySelector(".min-path");
 let memopath = document.querySelector(".memo");
 let stop = document.querySelector(".stop");
-let minimumPath = document.querySelector(".minimum-path");
+//let minimumPath = document.querySelector(".minimum-path");
 
 stop.addEventListener("click" , function()
 {
@@ -12,7 +12,7 @@ stop.addEventListener("click" , function()
 generateBoard.addEventListener("click" , CreateBoard);
 Path.addEventListener("click" , GeneratePath);
 memopath.addEventListener("click" , GeneratePathMemo);
-minimumPath.addEventListener("click" , minPathGenerator);
+//minimumPath.addEventListener("click" , minPathGenerator);
 
 let BoardArray = [];
 function CreateBoard(e)
