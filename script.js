@@ -30,6 +30,7 @@ function CreateBoard(e)
             row.push(boxOfbject);
         }
         BoardArray.push(row);
+        //console.log(BoardArray);
     }
     
     for(let i=0;i<20;i++)
@@ -49,6 +50,7 @@ function CreateBoard(e)
             divRow.append(box);
         }
         Board.append(divRow);
+        console.log(Board);
     }
     console.log(BoardArray.length);
     console.log(BoardArray[0].length);
@@ -70,10 +72,10 @@ async function allpath(i , j , sum , maxsum )
          return;
      }
      
-     if(i==19 && j==19)
-     {
-             return;
-     }
+    //  if(i==19 && j==19)
+    //  {
+    //          return;
+    //  }
     
 
      let currentBox = document.querySelector(`[rowid="${i}"][colid="${j}"]`);
@@ -112,10 +114,10 @@ async function allpathmemo(i , j , sum , maxsum)
          return;
      }
      
-     if(i==19 && j==19)
-     {
-             return;
-     }
+    //  if(i==19 && j==19)
+    //  {
+    //          return;
+    //  }
     
 
      let currentBox = document.querySelector(`[rowid="${i}"][colid="${j}"]`);
